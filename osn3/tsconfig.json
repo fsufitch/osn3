@@ -1,0 +1,32 @@
+
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "target": "es6",
+      "jsx": "react",
+  
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+  
+      "noImplicitAny": true,
+      "sourceMap": true,
+      "skipLibCheck": true,
+  
+      "baseUrl": "..",
+      "outDir": "../dist/js/",
+  
+      "typeRoots": ["../node_modules/@types"]
+    },
+    "awesomeTypescriptLoaderOptions": {
+      "useCache": true,
+      "useBabel": true,
+      "babelOptions": {
+        "sourceMaps": true,
+        "presets": ["env"]
+      },
+      "forkChecker": true,
+      "useWebpackText": true
+    },
+    "atom": { "rewriteTsconfig": false }
+  }
