@@ -41,7 +41,7 @@
     "node": "10.9.0",
     "npm": "6.2.0"
   },
-  "scriptS": {
+  "scripts": {
     "heroku-postbuild": "webpack"
   }
 }
