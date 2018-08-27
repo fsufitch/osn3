@@ -1,0 +1,4 @@
+{
+    "root": "dist/${ENV}",
+    "https_only": true
+}
