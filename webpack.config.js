@@ -42,7 +42,7 @@ module.exports = () => {
   };
 
   config.output = {
-    path: root('dist', envText),
+    path: root('dist'),
     filename: '[name].bundle.js',
   };
 
