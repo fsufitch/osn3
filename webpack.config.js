@@ -86,6 +86,7 @@ module.exports = () => {
   config.plugins = [
    new CopyWebpackPlugin([{
       from: root('osn3', 'static'),
+      to: root('dist', 'static'),
       flatten: true,
     }]),
     new webpack.ProvidePlugin({
