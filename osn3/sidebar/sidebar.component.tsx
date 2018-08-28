@@ -29,8 +29,8 @@ export class Sidebar extends React.Component<{}, NavigationState> {
     render() {
         return (
             <div className="navigation d-flex flex-column flex-grow-1 justify-content-between">
-                <div className="flex-column">
-                    <div className="flex-row justify-content-between">
+                <div className="d-flex flex-column">
+                    <div className="d-flex flex-row justify-content-between align-items-center">
                         <h2 style={{ whiteSpace: "nowrap" }}>
                             <Link to="/"> ~fsufitch/ </Link> @ web
                         </h2>
@@ -43,9 +43,7 @@ export class Sidebar extends React.Component<{}, NavigationState> {
                     <Nav collapsed={this.state.responsiveCollapsed} />
                 </div>
               
-                <div>
-                    <Footer collapsed={this.state.responsiveCollapsed}/>
-                </div>
+                <Footer collapsed={this.state.responsiveCollapsed}/>
             </div>
         )
     }
