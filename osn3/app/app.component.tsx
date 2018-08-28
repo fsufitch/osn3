@@ -1,35 +1,33 @@
 import * as React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { Navigation } from 'osn3/navigation';
+import { Sidebar } from 'osn3/sidebar';
 
 import './app.styles.scss';
-import { HelloWorld } from '../hello/hello.component';
+import { Home } from 'osn3/home';
+import { About } from 'osn3/about';
+import { Projects } from 'osn3/projects';
 
-const Foo = () => (
-    <p> Foo! </p>
-);
-
-const Bar = () => (
-    <p> Bar! </p>
-);
+const NoMatch = () => (
+    <img className="img-fluid" src={require('./404notfound.jpg')} />
+)
 
 export class App extends React.Component<{}, {}> {
     render() {
         let launchTime = parseInt(process.env.LAUNCH_TIME);
         return (
-
-
             <Router>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-sm-3">
-                            <Navigation />
-                        </div>
-                        <div className="col">
-                            <Route path="/foo" component={Foo}/>
-                            <Route path="/bar" component={Bar}/> 
-                        </div>
+                <div id="app-container" className="container-fluid d-flex flex-column flex-md-row align-items-stretch justify-content-start">
+                    <div id="app-sidebar" className="d-flex">
+                        <Sidebar />
+                    </div>
+                    <div id="app-content" className="flex-grow-1">
+                        <Switch>
+                            <Route exact path="/" component={Home} />
+                            <Route exact path="/about" component={About} />
+                            <Route exact path="/projects" component={Projects} /> 
+                            <Route component={NoMatch} />
+                        </Switch>
                     </div>
                 </div>
             </Router>

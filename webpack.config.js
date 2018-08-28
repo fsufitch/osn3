@@ -17,6 +17,7 @@ console.debug('Resolved build environment: '  + envText);
 // Webpack Plugins
 var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = () => {
   var config = {};
@@ -40,6 +41,10 @@ module.exports = () => {
       minimize: isProd,
   };
 
+  config.performance = {
+    hints: false,
+  };
+
   config.output = {
     path: root('dist'),
     filename: 'assets/[name].[chunkhash].bundle.js',
@@ -59,10 +64,22 @@ module.exports = () => {
     rules: [
       {test: require.resolve("jquery"), loaders: ["expose-loader?$", "expose-loader?jQuery"] },
       {test: /\.tsx?$/, loader: 'awesome-typescript-loader?configFileName=' + atlConfigFile},
-      {test: /\.(gif|png|jpg|svg|woff|woff2|ttf|eot)$/, loader: 'file-loader'},
       {test: /\.json$/, loader: 'json-loader'},
-      {test: /\.(css|scss|sass)$/, loaders: ['style-loader', 'css-loader', 'sass-loader']},
-      {test: /\.html$/, loader: 'html-loader'}
+      {test: /\.html$/, loader: 'html-loader'},
+      {
+        test: /\.(gif|png|jpg|svg|woff|woff2|ttf|eot)$/, 
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 8000, // Convert images < 8kb to base64 strings
+            name: 'assets/[hash]-[name].[ext]'
+          }
+        }],
+      },
+      {
+        test: /\.(css|scss|sass)$/, 
+        use: [{loader: MiniCssExtractPlugin.loader}, 'css-loader', 'sass-loader'],
+      },
     ]
   };
 
@@ -93,6 +110,9 @@ module.exports = () => {
     new HtmlWebpackPlugin({
       template: root('osn3', 'index.html'),
       chunksSortMode: 'dependency',
+    }),
+    new MiniCssExtractPlugin({
+      filename: "assets/[name].[chunkhash].bundle.css",
     }),
   ];
 

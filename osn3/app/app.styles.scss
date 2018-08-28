@@ -1,1 +1,21 @@
 @import '~bootstrap/scss/bootstrap';
+
+#app-root {
+    display: flex;
+    height: 100%;
+}
+
+#app-container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#app-sidebar {
+    background:#eeeeee;
+    padding-right: 25px;
+}
+
+#app-content {
+    padding: 15px;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
+}
