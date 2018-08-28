@@ -26,24 +26,23 @@ module.exports = () => {
     config.devtool = 'eval-source-map';
   } else {
     config.mode = 'production';
-    config.devtool = 'source-map';
+    config.devtool = 'none';
   }
 
   config.entry = {
     app: root('osn3', 'main.tsx'),
-    vendor: root('osn3', 'vendor.ts'),
   };
 
   config.optimization = {
       splitChunks: {
-        chunks: 'all',
+         chunks: "all",
       },
       minimize: isProd,
   };
 
   config.output = {
     path: root('dist'),
-    filename: '[name].bundle.js',
+    filename: 'assets/[name].[chunkhash].bundle.js',
   };
 
   config.resolve = {
@@ -52,6 +51,7 @@ module.exports = () => {
       alias: 'jquery',
       name: 'jquery/src/jquery',
     }],
+    modules: ['.', 'node_modules'],
   };
 
   var atlConfigFile = root('osn3', 'tsconfig.json');
@@ -61,13 +61,13 @@ module.exports = () => {
       {test: /\.tsx?$/, loader: 'awesome-typescript-loader?configFileName=' + atlConfigFile},
       {test: /\.(gif|png|jpg|svg|woff|woff2|ttf|eot)$/, loader: 'file-loader'},
       {test: /\.json$/, loader: 'json-loader'},
-      {test: /\.(css|scss|sass)$/, loaders: ['to-string-loader', 'css-loader', 'sass-loader']},
+      {test: /\.(css|scss|sass)$/, loaders: ['style-loader', 'css-loader', 'sass-loader']},
       {test: /\.html$/, loader: 'html-loader'}
     ]
   };
 
   config.plugins = [
-    new CopyWebpackPlugin([{
+   new CopyWebpackPlugin([{
       from: root('osn3', 'static'),
       flatten: true,
     }]),
