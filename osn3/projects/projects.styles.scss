@@ -1,0 +1,26 @@
+@import '~bootstrap/scss/bootstrap';
+
+.project-img {
+    max-width: 15em;
+    @extend .rounded;
+    @extend .img-fluid;
+    @extend .img-thumbnail;
+
+    &.inner {
+        display: block;
+        @extend .mx-auto;
+        @include media-breakpoint-up(md) {
+            display: none;
+        }
+    }
+
+    &.outer {
+        display: none;
+        margin-right: 1em;
+
+        @extend .float-left;
+        @include media-breakpoint-up(md) {
+            display: block;
+        }
+    }
+}

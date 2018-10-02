@@ -48,15 +48,6 @@ export class About extends React.Component<{}, AboutState> {
                     analysis of shorelines automatically extracted from satellite imagery.
                 </p>
 
-                <h4> Why "Open Source Nerd"?</h4>
-                <p>
-                    I firmly believe that the vast majority of software &mdash;
-                    and any that is reusable in particular &mdash; would benefit from being
-                    open source. I received this domain registration as a gift in the past,
-                    as a semi tongue-in-cheek acknowledgement of my open source advocacy.
-                </p>
-                <p> Also, why not? </p>
-
                 <h4> Contact Info </h4>
 
                 <p>
