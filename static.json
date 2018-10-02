@@ -5,5 +5,10 @@
         "/assets/*": "/assets",
         "/static/*": "/static",
         "/**": "index.html"
+    },
+    "headers": {
+        "/**": {
+            "Cache-Control": "public, max-age=512000"
+        }
     }
 }

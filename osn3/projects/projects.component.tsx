@@ -29,8 +29,8 @@ export const Projects = () => (
             <img className="project-img inner" src={require('./boarbot.png')} />
             <p>
                 I am an avid member of a small community of gamers. To enable playing
-                a variety of games together, we use a <a target="_blank" href="https://discord.gg">Discord</a>
-                server. To assist in operating it smoothly, I put together a small
+                a variety of games together, we use a <a target="_blank" href="https://discord.gg">Discord</a> server.
+                To assist in operating it smoothly, I put together a small
                 bot &mdash; complete with both useful and fun features.
             </p>
             <p> 
